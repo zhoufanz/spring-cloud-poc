@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: service-api-gateway
+server:
+  port: 3333
+
+eureka:
+  instance:
+    hostname: gateway
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://service-registration:1111/eureka/
+zuul:
+  routes:
+    storage-in:
+      path: /v1/storage/in/**
+      url: http://localhost:3333/storage-in-service/api/storage/in/
+    storage-transfer:
+      path: /v1/storage/transfer/**
+      url: http://localhost:3333/storage-transfer-service/api/storage/transfer/
+    storage-out:
+      path: /v1/storage/out/**
+      url: http://localhost:3333/storage-out-service/api/storage/out/
+    warehouse:
+      path: /v1/warehouse/**
+      url: http://localhost:3333/warehouse-service/api/warehouse/
+    inventory:
+      path: /v1/inventory/**
+      url: http://localhost:3333/inventory-service/api/inventory/
+    price:
+      path: /v1/price/**
+      url: http://localhost:3333/price-service/api/price/
+    spare-part:
+      path: /v1/spare-parts/**
+      url: http://localhost:3333/spare-parts-service/api/spare-parts/
+    operatior:
+      path: /v1/operator/**
+      url: http://localhost:3333/operator-service/api/operator/

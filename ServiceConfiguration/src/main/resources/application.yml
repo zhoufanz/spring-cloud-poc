@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: service-configuration
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitlab.sdtdev.net/dcs/spring-cloud-poc.git
+          search-paths: config-repo/nicholas,config-repo/brad,config-repo/zhoufan
+          username: zhoufan
+          password: 19920209q
+server:
+  port: 2222
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://service-registration:1111/eureka/
